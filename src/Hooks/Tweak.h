@@ -4,18 +4,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PXNavigationListGadget : UIViewController <UITableViewDelegate>
-@end
+#import <Foundation/Foundation.h>
+#import <LocalAuthentication/LocalAuthentication.h>
+#import <objc/runtime.h>
+#import <substrate.h>
 
 @interface PHAssetCollection : NSObject
-- (BOOL)px_isHiddenSmartAlbum;
-@end
-
-@interface PXNavigationListAssetCollectionItem : NSObject
-- (PHAssetCollection *)collection;
-@end
-
-@interface PXNavigationListCell : UITableViewCell
-- (PXNavigationListAssetCollectionItem *)listItem;
 @end
