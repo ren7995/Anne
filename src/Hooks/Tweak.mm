@@ -4,16 +4,10 @@
 //
 
 #import "Tweak.h"
-/*
-arg2 = PXNavigationListCell items index:
-0 = Imports
-1 = Hidden (Locked)
-2 = Recently Deleted (Locked)
-*/
 static void (*orig_didSelectRowAtIndexPath)(id, SEL, id, NSIndexPath *);
 static void hooked_didSelectRowAtIndexPath(id self, SEL _cmd, id arg1, NSIndexPath *arg2) {
     UITableViewCell *cell = [arg1 cellForRowAtIndexPath:arg2];
-    if([cell isKindOfClass:objc_getClass("PXNavigationListCell")] && arg2.row >= 1 && arg2.row <= 2) {
+    if([cell isKindOfClass:objc_getClass("PXNavigationListCell")] && arg2.row >= 0 && arg2.row <= 99) {
         [arg1 deselectRowAtIndexPath:arg2 animated:YES];
         LAContext *ctx = [[LAContext alloc] init];
         ctx.localizedCancelTitle = @"Cancel";
